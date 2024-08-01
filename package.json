@@ -22,7 +22,8 @@
 			"url": "http://localhost/release"
 		},
 		"win": {
-			"target": "nsis"
+			"target": "nsis",
+			"sign": "./sign.js"
 		},
 		"nsis": {
 			"oneClick": false,
