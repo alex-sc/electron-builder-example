@@ -13,7 +13,7 @@
 	"license": "ISC",
 	"devDependencies": {
 		"electron": "^1.7.9",
-		"electron-builder": "^19.37.2"
+		"electron-builder": "^24.13.3"
 	},
 	"build": {
 		"productName": "My First App",
@@ -31,7 +31,7 @@
 		}
 	},
 	"dependencies": {
-		"electron-log": "^2.2.9",
-		"electron-updater": "^2.13.0"
+		"electron-log": "^5.1.7",
+		"electron-updater": "^4.0.0"
 	}
 }
