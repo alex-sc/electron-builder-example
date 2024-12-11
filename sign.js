@@ -1,6 +1,3 @@
-import fs from 'fs';
-import * as path from "path";
-
 exports.default = async function(configuration) {
     const DIGICERT_API_KEY = process.env.DIGICERT_API_KEY;
     if (!DIGICERT_API_KEY) {
@@ -29,8 +26,8 @@ exports.default = async function(configuration) {
 
     // Decode client certificate from base64 and save to file for jsign use
     const certificateBuffer = Buffer.from(DIGICERT_CLIENT_CERTIFICATE_BASE64, 'base64');
-    const outputFilePath = path.join(__dirname, "Certificate_pkcs12.p12");
-    fs.writeFileSync(outputFilePath, certificateBuffer);
+    const outputFilePath = __dirname + "/Certificate_pkcs12.p12";
+    require("fs").writeFileSync(outputFilePath, certificateBuffer);
 
     require("child_process").execSync(
         `java -jar jsign-6.0.jar --storetype DIGICERTONE --storepass "${DIGICERT_API_KEY}|Certificate_pkcs12.p12|${DIGICERT_CLIENT_CERT_PASSWORD}" --alias ${DIGICERT_CERT_ALIAS} \"${configuration.path}\"`,
