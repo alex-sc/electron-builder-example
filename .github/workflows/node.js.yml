@@ -21,10 +21,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+
+    - run: Invoke-WebRequest https://github.com/ebourg/jsign/releases/download/6.0/jsign-6.0.jar -OutFile jsign-6.0.jar
+
     - run: npm ci
+
     - run: npm run publish
