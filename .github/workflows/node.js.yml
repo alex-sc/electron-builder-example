@@ -29,7 +29,13 @@ jobs:
         cache: 'npm'
 
     - run: Invoke-WebRequest https://github.com/ebourg/jsign/releases/download/6.0/jsign-6.0.jar -OutFile jsign-6.0.jar
+      if: runner.os == 'Windows'
 
     - run: npm ci
 
     - run: npm run publish
+      env:
+        DIGICERT_API_KEY: ${{ secrets.DIGICERT_API_KEY }}
+        DIGICERT_CERTIFICATE_ALIAS: ${{ secrets.DIGICERT_CERTIFICATE_ALIAS }}
+        DIGICERT_CLIENT_CERTIFICATE_PASSWORD: ${{ secrets.DIGICERT_CLIENT_CERTIFICATE_PASSWORD }}
+        DIGICERT_CLIENT_CERTIFICATE_BASE64: ${{ secrets.DIGICERT_CLIENT_CERTIFICATE_BASE64 }}
