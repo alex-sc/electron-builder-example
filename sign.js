@@ -30,7 +30,7 @@ exports.default = async function(configuration) {
     require("fs").writeFileSync(outputFilePath, certificateBuffer);
 
     require("child_process").execSync(
-        `java -jar jsign-6.0.jar --storetype DIGICERTONE --storepass "${DIGICERT_API_KEY}|Certificate_pkcs12.p12|${DIGICERT_CLIENT_CERT_PASSWORD}" --alias ${DIGICERT_CERT_ALIAS} \"${configuration.path}\"`,
+        `java -jar jsign-6.0.jar --storetype DIGICERTONE --storepass "${DIGICERT_API_KEY}|Certificate_pkcs12.p12|${DIGICERT_CLIENT_CERTIFICATE_PASSWORD}" --alias ${DIGICERT_CERTIFICATE_ALIAS} \"${configuration.path}\"`,
         {
             stdio: "inherit"
         }
